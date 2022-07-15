@@ -1,8 +1,9 @@
-package com.reshma.blogapp.blogApp.Model;
+package com.reshma.blogapp.blogApp.model;
 
 import java.util.Date;
 
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
@@ -21,13 +22,17 @@ import lombok.NoArgsConstructor;
 @Table(name = "post")
 public class Post {
 	@Id
-	@GeneratedValue
+	@GeneratedValue(strategy=GenerationType.AUTO)
 	private Integer id;
 	private String title;
 	private String body;
 	
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date createDate;
+	
+	@Temporal(TemporalType.TIMESTAMP)
+	private Date updatedAt;
+
 	
 	@ManyToOne
 	private User user;

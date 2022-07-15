@@ -1,5 +1,6 @@
-package com.reshma.blogapp.blogApp.Service;
+package com.reshma.blogapp.blogApp.service;
 
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -7,9 +8,9 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
-import com.reshma.blogapp.blogApp.Model.Post;
-import com.reshma.blogapp.blogApp.Model.User;
-import com.reshma.blogapp.blogApp.Repository.PostRepository;
+import com.reshma.blogapp.blogApp.model.Post;
+import com.reshma.blogapp.blogApp.model.User;
+import com.reshma.blogapp.blogApp.repository.PostRepository;
 
 @Service
 public class PostServiceImpl implements PostService{
@@ -18,7 +19,7 @@ public class PostServiceImpl implements PostService{
 	private PostRepository postRepository;
 	
 	@Override
-	public Optional<Post> findForId(Integer id) {
+	public Optional<Post> findById(Integer id) {
 		return postRepository.findById(id);
 	}
 
@@ -28,15 +29,10 @@ public class PostServiceImpl implements PostService{
 		return postRepository.save(post);
 	}
 
-	@Override
-	public Page<Post> findByUserOrderedByDatePageable(User user, Pageable pageable) {
-		return postRepository.findByUserOrderByCreateDateDesc(user, pageable);
-	}
-
-	@Override
-	public Page<Post> findAllOrderedByDatePageable(Pageable pageable) {
-		return postRepository.findAllByOrderByCreateDateDesc(pageable);
-	}
+	
+	public List<Post> getAll() {
+	        return postRepository.findAll();
+	    }
 
 	@Override
 	public void delete(Post post) {

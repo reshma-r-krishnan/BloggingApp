@@ -1,20 +1,15 @@
-package com.reshma.blogapp.blogApp.Repository;
+package com.reshma.blogapp.blogApp.repository;
 
 import java.util.Optional;
 
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
-import com.reshma.blogapp.blogApp.Model.Post;
-import com.reshma.blogapp.blogApp.Model.User;
+import com.reshma.blogapp.blogApp.model.Post;
 @Repository
 public interface PostRepository extends JpaRepository<Post, Integer>{
 
-    Page<Post> findByUserOrderByCreateDateDesc(User user, Pageable pageable);
-
-    Page<Post> findAllByOrderByCreateDateDesc(Pageable pageable);
+ 
 
     Optional<Post> findById(Integer id);
 }

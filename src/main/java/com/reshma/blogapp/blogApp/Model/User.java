@@ -1,9 +1,10 @@
-package com.reshma.blogapp.blogApp.Model;
+package com.reshma.blogapp.blogApp.model;
 
-import java.util.Set;
+import java.util.List;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -25,7 +26,7 @@ import lombok.NoArgsConstructor;
 public class User {
 	
 	@Id
-	@GeneratedValue
+	@GeneratedValue(strategy=GenerationType.AUTO)
 	private Integer id;
 	private String name;
 	private String userName;
@@ -35,6 +36,6 @@ public class User {
 	private String password;
 	
 	@OneToMany(mappedBy = "user")
-	private Set<Post> posts;
+	private List<Post> posts;
 
 }

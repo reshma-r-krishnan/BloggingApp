@@ -1,23 +1,22 @@
-package com.reshma.blogapp.blogApp.Service;
+package com.reshma.blogapp.blogApp.service;
 
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 
-import com.reshma.blogapp.blogApp.Model.Post;
-import com.reshma.blogapp.blogApp.Model.User;
+import com.reshma.blogapp.blogApp.model.Post;
+import com.reshma.blogapp.blogApp.model.User;
 
 public interface PostService {
 	
-    Optional<Post> findForId(Integer id);
+    Optional<Post> findById(Integer id);
 
     Post save(Post post);
 
-    Page<Post> findByUserOrderedByDatePageable(User user, Pageable pageable);
-
-    Page<Post> findAllOrderedByDatePageable(Pageable pageable);
-
+    List<Post> getAll() ;
+    
     void delete(Post post);
 
 }
